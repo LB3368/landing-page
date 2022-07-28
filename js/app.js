@@ -154,6 +154,24 @@ function ToggleNavBar() {
 // End Toggle NavBar according to User scroll activity
 
 // Start scroll event for activeSection and toggleNavBar
+var scroll = document.getElementById("top")
+window.addEventListener("scroll", function() {
+    this.scroll.style.transform = "rotate("+this.window.pageYOffset+"deg)";
+})
+
+const scrollTop = document.querySelector(".scrollToTop")
+$(window).on('scroll',() => {
+        if (window.scrollY > (window.outerHeight + (window.outerHeight / 2))) {
+            $('#scrollToTop').addClass('active');
+            setTimeout(function () {
+                var theta = ($(window).scrollTop() - (window.outerHeight + (window.outerHeight / 2))) / 500;
+                $('#scrollToTop').css({ transform: 'rotate(' + theta + 'rad)' });
+            });
+        } else {
+            $('#scrollToTop').removeClass('active');
+        }
+    })
+
 window.addEventListener('scroll',(event)=> {
     activeSection();
     ToggleNavBar();
